@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Introduction
+Ogcool helps you to generate Open Graph images for your website. It comes with a set of templates that you can use to generate images for your website.
 
-## Getting Started
+It includes a ton of options for you to customize the image to your liking. You can change the text, font size, font color, background color, and more.
 
-First, run the development server:
+Powered by [`@vercel/og`](https://vercel.com/docs/functions/edge-functions/og-image-generation)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Examples
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### UnJS
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![image](https://ogcool.vercel.app/templates/v1/tpl_jNvsOYr0cr?d=eyJtb2RpZmljYXRpb25zIjpbXX0%3D)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Try it for yourself: https://ogcool.vercel.app/?d=eyJtb2RpZmljYXRpb25zIjpbXSwidGVtcGxhdGVJZCI6InRwbF9qTnZzT1lyMGNyIn0%3D ([OG image preview](https://dub.co/tools/metatags?url=https%3A%2F%2Fogcool.vercel.app%2Fpreview%3Fname%3DUnJS%26d%3DeyJtb2RpZmljYXRpb25zIjpbXSwidGVtcGxhdGVJZCI6InRwbF9qTnZzT1lyMGNyIn0%253D))
 
-## Learn More
+### Github
 
-To learn more about Next.js, take a look at the following resources:
+![image](https://ogcool.vercel.app/templates/v1/tpl_G6uGICG0L8?d=eyJtb2RpZmljYXRpb25zIjpbXX0%3D)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Try it for yourself: https://ogcool.vercel.app/?d=eyJtb2RpZmljYXRpb25zIjpbXSwidGVtcGxhdGVJZCI6InRwbF9HNnVHSUNHMEw4In0%3D ([OG image preview](https://dub.co/tools/metatags?url=https%3A%2F%2Fogcool.vercel.app%2Fpreview%3Fname%3DUnJS%26d%3DeyJtb2RpZmljYXRpb25zIjpbXSwidGVtcGxhdGVJZCI6InRwbF9qTnZzT1lyMGNyIn0%253D))
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Credit
+Thanks for the name ogcool from @steven-tey https://github.com/steven-tey/og
 
-## Deploy on Vercel
+## Hosting
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<a href="https://vercel.com/?utm_source=ogcool&utm_campaign=oss">
+  <img width="159" height="33" alt="Powered by Vercel" src="https://user-images.githubusercontent.com/5880908/218415645-ac47f9ba-0d60-47eb-950c-ed10bba1e7f6.png" />
+</a>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## SLA
+Socialify is under active development. Design and project domain are subject to change without notice.
+
+## Privacy
+Ogcool does not collect any personal or identifiable information, we do not use cookies, do not collect emails or anything.

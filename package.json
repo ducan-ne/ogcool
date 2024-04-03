@@ -1,25 +1,78 @@
 {
   "name": "ogcool",
   "version": "0.1.0",
-  "private": true,
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --turbo",
+    "build": "next build --no-lint",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "sdk:watch": "tsup --watch",
+    "sdk:build": "tsup",
+    "fmt": "pnpm biome format . --write && pnpm biome check . --apply-unsafe ",
+    "up": "vercel build --prod && vercel deploy --prebuilt --prod",
+    "test": "bun test"
   },
   "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "14.0.4"
+    "bannerify-js": "^0.0.11",
+    "use-debounce": "^10.0.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@biomejs/biome": "^1.6.4",
+    "@glidejs/glide": "^3.6.0",
+    "@phosphor-icons/react": "^2.1.4",
+    "@react-aria/focus": "^3.16.2",
+    "@shikijs/transformers": "^1.2.4",
+    "@shikijs/twoslash": "^1.3.0",
+    "@swc/core": "^1.4.12",
+    "@types/bun": "^1.0.12",
+    "@types/form-serialize": "^0.7.4",
+    "@types/glidejs__glide": "^3.6.5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@use-gesture/react": "^10.3.1",
     "autoprefixer": "^10.0.1",
+    "clsx": "^2.1.0",
+    "embla-carousel": "^8.0.1",
+    "embla-carousel-react": "^8.0.1",
+    "form-serialize": "^0.7.2",
+    "iconoir-react": "^7.5.0",
+    "lines-and-columns": "^2.0.4",
+    "lint-staged": "^15.2.2",
+    "next": "14.1.4",
     "postcss": "^8",
-    "tailwindcss": "^3.3.0"
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
+    "react": "^18",
+    "react-aria": "^3.32.1",
+    "react-aria-components": "1.1.2-nightly.4545",
+    "react-dom": "^18",
+    "remeda": "^1.57.1",
+    "shiki": "^1.2.4",
+    "sonner": "^1.4.41",
+    "tailwind-merge": "^2.2.2",
+    "tailwind-variants": "^0.2.1",
+    "tailwindcss": "^3.3.0",
+    "tailwindcss-animate": "^1.0.7",
+    "tsup": "^8.0.2",
+    "typescript": "^5"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "biome check --apply"
+  },
+  "volta": {
+    "node": "20.12.1"
   }
 }
