@@ -1,25 +1,21 @@
 "use client"
-import { Checkbox } from "@/app/components/checkbox"
 import ogcool from "@/app/sdk"
 import { cn } from "@/app/utils"
 import { X } from "@phosphor-icons/react"
 import type { Modification } from "bannerify-js"
 import serialize from "form-serialize"
-import { Code, Edit, Github, MediaImage, Send } from "iconoir-react"
-import type { Metadata } from "next"
+import { Code, Edit, MediaImage, Send } from "iconoir-react"
 import dynamic from "next/dynamic"
 import Image from "next/image"
 import { useSearchParams } from "next/navigation"
 import {
   Suspense,
-  use,
   useCallback,
   useDeferredValue,
   useEffect,
   useMemo,
   useRef,
   useState,
-  useTransition,
 } from "react"
 import {
   Button,
@@ -27,16 +23,14 @@ import {
   DialogTrigger,
   Form,
   Heading,
-  Input,
-  Label,
   Modal,
   ModalOverlay,
-  TextField,
 } from "react-aria-components"
 import { isDeepEqual, omit } from "remeda"
 import { Toaster, toast } from "sonner"
 import { useDebounce } from "use-debounce"
 import { Gallery } from "./components/gallery"
+import { ModificationEdit } from "./components/modification"
 import { templates } from "./templates"
 
 const ConnectDynamic = dynamic(() => import("@/app/components/connect").then((m) => m.Connect), {
@@ -46,7 +40,6 @@ const ConnectDynamic = dynamic(() => import("@/app/components/connect").then((m)
 
 function Home() {
   const searchParams = useSearchParams()
-  const [, startTransition] = useTransition()
   const [data, setData] = useState<{
     modifications?: Modification[]
     templateId: string
@@ -59,20 +52,21 @@ function Home() {
     [templateId],
   )
   const [isLoading, setIsLoading] = useState(false)
+  const deferredData = useDeferredValue(data)
   const previewUrl = useMemo(() => {
     const url = new URL("https://ogcool.vercel.app/preview")
     url.searchParams.set("name", template.name)
-    url.searchParams.set("d", btoa(JSON.stringify(data)))
+    url.searchParams.set("d", btoa(JSON.stringify(deferredData)))
     return `https://dub.co/tools/metatags?url=${encodeURIComponent(url.toString())}`
-  }, [data])
+  }, [deferredData])
   const urlData = useMemo(() => {
     return ogcool(template.name as any, {
-      modifications: data.modifications as any,
+      modifications: deferredData.modifications as any,
       format: "svg",
       sdk: false,
       disableTelemetry: true,
     })
-  }, [data, template.name])
+  }, [deferredData, template.name])
   const [imageUrl] = useDebounce(urlData, 500)
 
   useEffect(() => {
@@ -124,17 +118,22 @@ function Home() {
         .filter((m) => m._ok)
         .map((m) => omit(m, ["_ok"]))
 
-      startTransition(() => setData({ modifications: newModifications, templateId }))
+      setData({ modifications: newModifications, templateId })
     }, 0)
   }, [template, data])
 
   return (
-    <main className="min-h-screen h-max bg-slate-50">
+    <main className="h-max min-h-screen bg-slate-50">
       <Toaster position="top-center" />
-      <div className="flex flex-col md:flex-row h-screen">
-        <div className="flex-1 h-[50vh] md:h-screen overflow-scroll flex flex-col p-6 gap-2">
-          <Gallery onSelect={setTemplateId} />
-          <div className="flex-1 h-full overflow-hidden flex flex-col items-center justify-center shrink-0">
+      <div className="flex h-screen flex-col md:flex-row">
+        <div className="flex h-[50vh] flex-1 flex-col gap-2 overflow-scroll p-6 md:h-screen">
+          <Gallery
+            onSelect={(id) => {
+              setTemplateId(id)
+              setData({ templateId: id })
+            }}
+          />
+          <div className="flex h-full flex-1 shrink-0 flex-col items-center justify-center overflow-hidden">
             <div className="flex flex-col gap-2">
               <Button
                 onPress={() => {
@@ -143,7 +142,7 @@ function Home() {
                 }}
                 className="w-fit outline-0"
               >
-                <h2 className="text-base font-medium text-gray-900 select-none">{template.name}</h2>
+                <h2 className="select-none font-medium text-base text-gray-900">{template.name}</h2>
               </Button>
               <Image
                 fetchPriority="high"
@@ -152,7 +151,7 @@ function Home() {
                 width={760}
                 height={250}
                 className={cn(
-                  "border max-h-[40vh] lg:max-h-[400px] min-w-[760px] border-gray-200 rounded-xl aspect-[1.9/1] opacity-100 shadow-lg",
+                  "aspect-[1.9/1] max-h-[40vh] rounded-xl border border-gray-200 opacity-100 lg:max-h-[400px] md:min-w-[760px] shadow-lg",
                   {
                     "opacity-80": isLoading,
                   },
@@ -167,11 +166,11 @@ function Home() {
             <div className="h-[30%]" />
           </div>
         </div>
-        <div className="bg-white h-[50vh] md:h-screen overflow-scroll shadow-lg flex flex-col divide-y">
-          <div className="p-6 grid items-center grid-cols-2 gap-2">
+        <div className="flex h-[50vh] flex-col divide-y overflow-scroll bg-white shadow-lg md:h-screen">
+          <div className="grid grid-cols-2 items-center gap-2 p-6">
             <Button
               type="button"
-              className="text-white bg-black hover:bg-[#333]/90 focus:ring-4 focus:outline-none focus:ring-[#999]/50 font-medium rounded-lg text-xs px-5 py-2.5 text-center inline-flex items-center mr-2 "
+              className="mr-2 inline-flex items-center rounded-lg bg-black px-5 py-2.5 text-center font-medium text-white text-xs hover:bg-[#333]/90 focus:outline-none focus:ring-4 focus:ring-[#999]/50"
               onPress={() => {
                 navigator.clipboard.writeText(
                   ogcool(template!.name, {
@@ -183,11 +182,11 @@ function Home() {
                 toast("Copied to clipboard")
               }}
             >
-              <MediaImage className="mr-2 -ml-1 w-4 h-4" />
+              <MediaImage className="-ml-1 mr-2 h-4 w-4" />
               Copy (URL)
             </Button>
             <Button
-              className="text-black bg-white border hover:bg-[#eee]/90 focus:ring-4 focus:outline-none focus:ring-[#999]/50 font-medium rounded-lg text-xs px-5 py-2.5 text-center inline-flex items-center mr-2"
+              className="mr-2 inline-flex items-center rounded-lg border bg-white px-5 py-2.5 text-center font-medium text-black text-xs hover:bg-[#eee]/90 focus:outline-none focus:ring-4 focus:ring-[#999]/50"
               onPress={() => {
                 const url = new URL(
                   ogcool(template!.name, {
@@ -202,41 +201,42 @@ function Home() {
                 toast("Copied to clipboard")
               }}
             >
-              <Edit className="mr-2 -ml-1 w-4 h-4" />
+              <Edit className="-ml-1 mr-2 h-4 w-4" />
               Copy (editor)
             </Button>
 
             <DialogTrigger>
-              <Button className="text-black bg-white border hover:bg-[#eee]/90 focus:ring-4 focus:outline-none focus:ring-[#999]/50 font-medium rounded-lg text-xs px-5 py-2.5 text-center inline-flex items-center mr-2">
-                <Code className="mr-2 -ml-1 w-4 h-4" />
+              <Button className="mr-2 inline-flex items-center rounded-lg border bg-white px-5 py-2.5 text-center font-medium text-black text-xs hover:bg-[#eee]/90 focus:outline-none focus:ring-4 focus:ring-[#999]/50">
+                <Code className="-ml-1 mr-2 h-4 w-4" />
                 Connect
               </Button>
               <ModalOverlay
                 isDismissable
-                className={({ isEntering, isExiting }) => `
-                  fixed inset-0 z-10 overflow-y-auto bg-black/25 flex min-h-full items-center justify-center p-4 text-center
-                  ${isEntering ? "animate-in fade-in duration-300 ease-out" : ""}
-                  ${isExiting ? "animate-out fade-out duration-200 ease-in" : ""}
-                `}
+                className={({ isEntering, isExiting }) =>
+                  `fixed inset-0 z-10 flex min-h-full items-center justify-center overflow-y-auto bg-black/25 p-4 text-center${
+                    isEntering ? "fade-in animate-in duration-300 ease-out" : ""
+                  }${isExiting ? "fade-out animate-out duration-200 ease-in" : ""}`
+                }
               >
                 <Modal
-                  className={({ isEntering, isExiting }) => `
-                    w-full max-w-[800px] min-h-[60vh] overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl
-                    ${isEntering ? "animate-in zoom-in-95 ease-out duration-300" : ""}
-                    ${isExiting ? "animate-out zoom-out-95 ease-in duration-200" : ""}`}
+                  className={({ isEntering, isExiting }) =>
+                    `min-h-[60vh] w-full max-w-[800px] overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl${
+                      isEntering ? "zoom-in-95 animate-in duration-300 ease-out" : ""
+                    }${isExiting ? "zoom-out-95 animate-out duration-200 ease-in" : ""}`
+                  }
                 >
-                  <Dialog role="alertdialog" className="outline-none relative">
+                  <Dialog role="alertdialog" className="relative outline-none">
                     {({ close }) => (
                       <>
                         <div className="flex justify-between pb-4">
                           <Heading className="text-2xl" slot="title">
                             Connect to code using SDK
                           </Heading>
-                          <Button onPress={close} className="w-4 h-4">
+                          <Button onPress={close} className="h-4 w-4">
                             <X className="fill-gray-500" />
                           </Button>
                         </div>
-                        <p className="text-sm text-slate-800 font-normal pb-4">
+                        <p className="pb-4 font-normal text-slate-800 text-sm">
                           The SDK provides a sugar syntax to connect ogcool to your codebase.
                           Typesafe, delightful, easy to use 💫.
                         </p>
@@ -253,59 +253,34 @@ function Home() {
               </ModalOverlay>
             </DialogTrigger>
             <a
-              className="text-black bg-white border hover:bg-[#eee]/90 focus:ring-4 focus:outline-none focus:ring-[#999]/50 font-medium rounded-lg text-xs px-5 py-2.5 text-center inline-flex items-center mr-2"
+              className="mr-2 inline-flex items-center rounded-lg border bg-white px-5 py-2.5 text-center font-medium text-black text-xs hover:bg-[#eee]/90 focus:outline-none focus:ring-4 focus:ring-[#999]/50"
               href={previewUrl}
               target="_blank"
               rel="noreferrer"
             >
-              <Send className="mr-2 -ml-1 w-4 h-4" />
+              <Send className="-ml-1 mr-2 h-4 w-4" />
               Preview
             </a>
           </div>
           <div className="p-6">
-            <div className="text-base font-medium text-gray-900">Modifications</div>
+            <div className="font-medium text-base text-gray-900">Modifications</div>
             <div className="mt-4 flex flex-col gap-3">
               <Form
                 ref={formRef}
-                // @ts-expect-error - this is a bug in the types
+                key={template.id}
+                // @ts-expect-error - RAC does not have a type for this
                 onChange={onFormUpdate}
+                className="flex flex-col gap-2"
               >
                 {template.modifications.map((modification) => {
-                  const defaultVisible = modification.visible ?? true
-                  const field = !modification.type || modification.type === "text" ? "text" : "src"
-                  const inData = data.modifications?.find((i) => i.name === modification.name)
-                  const isReadOnly =
-                    inData && typeof inData.visible !== "undefined"
-                      ? !inData.visible
-                      : !defaultVisible
                   return (
-                    <TextField
+                    <ModificationEdit
                       key={template.id + modification.name}
-                      name={`${modification.name}][${field}]`}
-                      className="flex justify-between gap-2 py-2 items-center"
-                      type={modification.type || "text"}
-                      defaultValue={
-                        data.modifications?.find((i) => i.name === modification.name)?.text ??
-                        modification.defaultValue
-                      }
-                      isReadOnly={isReadOnly}
-                    >
-                      <Label
-                        className="gap-3 text-sm font-medium text-gray-700 truncate w-24 break-words"
-                        title={modification.name}
-                      >
-                        {modification.name}
-                      </Label>
-                      <Input className="flex-1 flex rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 read-only:text-gray-400 read-only:pointer-events-none text-[16px] md:text-xs py-2 px-3" />
-                      <Checkbox
-                        name={`[${modification.name}][visible]`}
-                        defaultSelected={
-                          data.modifications?.find((i) => i.name === modification.name)?.visible ??
-                          defaultVisible
-                        }
-                        onChange={onFormUpdate}
-                      />
-                    </TextField>
+                      data={deferredData}
+                      template={template}
+                      modification={modification}
+                      onUpdate={onFormUpdate}
+                    />
                   )
                 })}
               </Form>

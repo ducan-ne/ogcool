@@ -11,10 +11,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "ogcool",
-  description: "Your read to use open graph image generator",
+  description: "Your ready to use open graph image generator",
   openGraph: {
     title: "ogcool",
-    description: "Your read to use open graph image generator",
+    description: "Your ready to use open graph image generator",
+    images: ["https://ogcool.vercel.app/og.png"],
   },
 }
 
@@ -34,7 +35,7 @@ export default function RootLayout({
         />
         <script id="counterscale-script" src="https://tracking.graph.vn/tracker.js" defer />
       </head>
-      <body className={`${inter.variable} min-h-screen bg-white font-sans antialiased`}>
+      <body className={`min-h-screen bg-white font-sans antialiased${inter.variable}`}>
         <AppProvider>{children}</AppProvider>
       </body>
     </html>
