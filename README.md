@@ -22,6 +22,8 @@ Try it for yourself: https://ogcool.vercel.app/?d=eyJtb2RpZmljYXRpb25zIjpbXSwidG
 ## Credit
 Thanks for the name ogcool from @steven-tey https://github.com/steven-tey/og
 
+UI is copied and tweaked a lot from https://og-image-meme.vercel.app/
+
 ## Hosting
 
 <a href="https://vercel.com/?utm_source=ogcool&utm_campaign=oss">
