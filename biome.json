@@ -30,7 +30,8 @@
         "noNonNullAssertion": "off"
       },
       "performance": {
-        "noDelete": "off"
+        "noDelete": "off",
+        "noBarrelFile": "error"
       },
       "suspicious": {
         "noExplicitAny": "off"
