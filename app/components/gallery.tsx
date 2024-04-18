@@ -153,6 +153,7 @@ export const Gallery = ({
                           >
                             <Image
                               fetchPriority="low"
+                              loading="eager"
                               src={ogcool(name, {
                                 sdk: false,
                                 format: "svg",
@@ -213,6 +214,7 @@ export const Gallery = ({
               >
                 <Image
                   fetchPriority="low"
+                  loading="eager"
                   src={ogcool(name, {
                     sdk: false,
                     format: "svg",

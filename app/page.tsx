@@ -156,6 +156,7 @@ function Home() {
                     "opacity-80": isLoading,
                   },
                 )}
+                loading="eager"
                 onLoad={() => {
                   setIsLoading(false)
                 }}

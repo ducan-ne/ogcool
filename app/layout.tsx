@@ -26,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
+      <head suppressHydrationWarning>
         <script
           dangerouslySetInnerHTML={{
             __html:
@@ -35,7 +35,7 @@ export default function RootLayout({
         />
         <script id="counterscale-script" src="https://tracking.graph.vn/tracker.js" defer />
       </head>
-      <body className={`min-h-screen bg-white font-sans antialiased${inter.variable}`}>
+      <body suppressHydrationWarning className={`min-h-screen bg-white font-sans antialiased ${inter.variable}`}>
         <AppProvider>{children}</AppProvider>
       </body>
     </html>
