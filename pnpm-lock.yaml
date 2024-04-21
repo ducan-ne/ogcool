@@ -13,6 +13,9 @@ dependencies:
     version: 10.0.0(react@18.2.0)
 
 devDependencies:
+  '@baselime/edge-logger':
+    specifier: ^0.3.2
+    version: 0.3.2
   '@biomejs/biome':
     specifier: ^1.7.0
     version: 1.7.0
@@ -147,6 +150,12 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.1
+    dev: true
+
+  /@baselime/edge-logger@0.3.2:
+    resolution: {integrity: sha512-Z7vAtFx7Ld8+Um1PSxUyEP0Wx/T43EYm0zD3lM1h59bJeC+I8Uh90KkAkZckwNnaC3R0tjW6h5DQdSmtRLhSXQ==}
+    dependencies:
+      '@opentelemetry/api': 1.6.0
     dev: true
 
   /@biomejs/biome@1.7.0:
@@ -678,6 +687,11 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.16.0
+    dev: true
+
+  /@opentelemetry/api@1.6.0:
+    resolution: {integrity: sha512-OWlrQAnWn9577PhVgqjUvMr1pg57Bc4jv0iL4w0PRuOSRvq67rvHW9Ie/dZVMvCzhSCB+UxhcY/PmCmFj33Q+g==}
+    engines: {node: '>=8.0.0'}
     dev: true
 
   /@phosphor-icons/react@2.1.4(react-dom@18.2.0)(react@18.2.0):

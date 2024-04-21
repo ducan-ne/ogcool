@@ -32,6 +32,9 @@ export const templates: Template[] = [
       {
         name: 'Description',
         defaultValue: 'Automated markdown maintainer',
+        meta: {
+          textarea: true,
+        }
       },
       {
         name: 'Logo 1',
@@ -226,6 +229,65 @@ Serializer gem`,
     }, {
       name: 'Text 3',
       defaultValue: 'Community meetup'
+    }]
+  },
+  {
+    id: 'tpl_V42NBJ7A8I',
+    name: 'Branding 5',
+    modifications: [{
+      name: 'Text',
+      defaultValue: 'Branding 5'
+    }, {
+      name: 'Image',
+      type: 'url',
+      defaultValue: 'https://celwszfgcmidbdbinqaz.supabase.co/storage/v1/object/public/assets/org_2eaLD3Yj0x6axnxHEI8RWqWQWBC/RyiCfDYT9B8DD4QbvHbn1---file'
+    }]
+  },
+  {
+    id: 'tpl_Ungw707duC',
+    name: 'IdeaGenius',
+    modifications: [{
+      name: 'Text',
+      defaultValue: 'IdeaGenius.xyz'
+    }, {
+      name: 'Text 1',
+      defaultValue: 'Niche Business Idea\nGenerator',
+      meta: {
+        textarea: true
+      }
+    }, {
+      name: 'Image',
+      type: 'url',
+      defaultValue: 'https://celwszfgcmidbdbinqaz.supabase.co/storage/v1/object/public/assets/org_2eaLD3Yj0x6axnxHEI8RWqWQWBC/rfA4DoT5p-xDsIsIzIlk3---file'
+    }]
+  },
+  {
+    id: 'tpl_Ungw707duC',
+    name: 'Uneed',
+    modifications: [{
+      name: 'Text',
+      defaultValue: 'A launch platform for your\nproducts.',
+      meta: {
+        textarea: true
+      }
+    }, {
+      name: 'Image',
+      type: 'url',
+      defaultValue: 'https://celwszfgcmidbdbinqaz.supabase.co/storage/v1/object/public/assets/org_2eaLD3Yj0x6axnxHEI8RWqWQWBC/-Oe9liXlS-d0FmjxxBPB----CleanShot-2024-04-21-at-10.54.06-2x-removebg-preview.png'
+    }]
+  },
+  {
+    id: 'tpl_JZqTL6ySAf',
+    name: 'IndexPlease',
+    modifications: [{
+      name: 'Icon',
+      defaultValue: '🙏',
+    }, {
+      name: 'Text',
+      defaultValue: 'IndexPlease',
+    }, {
+      name: 'Text 2',
+      defaultValue: 'Get your pages\nindexed in 48 hours',
     }]
   }
 ]

@@ -29,6 +29,7 @@
     "use-debounce": "^10.0.0"
   },
   "devDependencies": {
+    "@baselime/edge-logger": "^0.3.2",
     "@biomejs/biome": "^1.7.0",
     "@glidejs/glide": "^3.6.0",
     "@phosphor-icons/react": "^2.1.4",
