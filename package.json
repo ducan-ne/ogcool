@@ -1,16 +1,15 @@
 {
   "name": "ogcool",
   "version": "0.1.9",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "main": "dist/sdk.js",
   "module": "dist/sdk.mjs",
   "types": "dist/sdk.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
+      "import": "./dist/sdk.mjs",
+      "types": "./dist/sdk.d.ts",
+      "require": "./dist/sdk.js"
     }
   },
   "scripts": {
