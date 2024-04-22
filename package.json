@@ -1,12 +1,10 @@
 {
   "name": "ogcool",
   "version": "0.1.8",
-  "files": [
-    "dist"
-  ],
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "main": "dist/sdk.js",
+  "module": "dist/sdk.mjs",
+  "types": "dist/sdk.d.ts",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",

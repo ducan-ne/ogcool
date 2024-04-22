@@ -34,10 +34,18 @@ test("sdk:empty", () => {
 
 // biome-ignore lint/correctness/noUnusedVariables: <explanation>
 function testType() {
-  ogcool("Beta update x", {
+  ogcool("Beta update", {
     modifications: [
       {
         name: "Author name",
+      },
+    ],
+  })
+  ogcool("EPICREACT.DEV", {
+    modifications: [
+      {
+        name: "Description",
+        text: "My website is beautiful",
       },
     ],
   })
