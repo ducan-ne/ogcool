@@ -65,9 +65,7 @@ export const Connect = ({
           <meta property="og:title" content="My website"/>
           <meta property="og:description" content=""/>
           <meta property="og:url" content="https://example.com"/>
-          <meta property="og:image" content={ogcool("${templateName}", { modifications: ${JSON.stringify(
-            modifications,
-          )} })}/>
+          <meta property="og:image" content={image}/>
         </head>
         <body>
           <slot />
@@ -206,7 +204,16 @@ export const Connect = ({
             dangerouslySetInnerHTML={{
               __html: use(
                 formatCode(astroSnippet, "typescript")
-                  .then((e) => `---\nconst { title } = Astro.props;\n---\n${e.slice(1)}`)
+                  .then(async (e) => {
+                    const jsCode = `
+                      import ogcool from 'ogcool'
+                      const image = ogcool("${templateName}", { modifications: ${JSON.stringify(
+                        modifications,
+                      )} })
+                      const { title } = Astro.props;
+                    `
+                    return `---\n${await formatCode(jsCode, "typescript")}---\n${e.slice(1)}`
+                  })
                   .then((c) => {
                     const lines = new LinesAndColumns(c)
                     const start = c.lastIndexOf("<meta")

@@ -155,6 +155,7 @@ function Home() {
                 <h2 className="select-none font-medium text-base text-gray-900">{template.name}</h2>
               </Button>
               <Image
+                suppressHydrationWarning
                 fetchPriority="high"
                 src={imageUrl}
                 alt="preview"
