@@ -31,7 +31,7 @@ UI is copied and tweaked a lot from https://og-image-meme.vercel.app/
 </a>
 
 ## SLA
-Socialify is under active development. Design and project domain are subject to change without notice.
+Ogcool is under active development. Design and project domain are subject to change without notice.
 
 ## Privacy
 Ogcool does not collect any personal or identifiable information, we do not use cookies, do not collect emails or anything.
