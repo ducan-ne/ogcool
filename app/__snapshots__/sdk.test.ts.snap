@@ -1,7 +1,7 @@
 // Bun Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`sdk 1`] = `"http://localhost:3000/templates/tpl_jNvsOYr0cr?d=eyJtb2RpZmljYXRpb25zIjpbeyJuYW1lIjoiRGVzY3JpcHRpb24iLCJ0ZXh0IjoiSGVsbG8gd29ybGQifV19&sdk=ogcool%400.1.0"`;
+exports[`sdk 1`] = `"http://localhost:3000/templates/v1/tpl_jNvsOYr0cr?d=eyJtb2RpZmljYXRpb25zIjpbeyJuYW1lIjoiRGVzY3JpcHRpb24iLCJ0ZXh0IjoiSGVsbG8gd29ybGQifV19&sdk=ogcool%400.1.6"`;
 
-exports[`sdk:telemetry-disabled 1`] = `"http://localhost:3000/templates/tpl_jNvsOYr0cr?d=eyJtb2RpZmljYXRpb25zIjpbeyJuYW1lIjoiRGVzY3JpcHRpb24iLCJ0ZXh0IjoiSGVsbG8gd29ybGQifV0sImRpc2FibGVUZWxlbWV0cnkiOnRydWV9"`;
+exports[`sdk:telemetry-disabled 1`] = `"http://localhost:3000/templates/v1/tpl_jNvsOYr0cr?d=eyJtb2RpZmljYXRpb25zIjpbeyJuYW1lIjoiRGVzY3JpcHRpb24iLCJ0ZXh0IjoiSGVsbG8gd29ybGQifV19"`;
 
-exports[`sdk:empty 1`] = `"http://localhost:3000/templates/tpl_jNvsOYr0cr?sdk=ogcool%400.1.0"`;
+exports[`sdk:empty 1`] = `"http://localhost:3000/templates/v1/tpl_jNvsOYr0cr?sdk=ogcool%400.1.6"`;
