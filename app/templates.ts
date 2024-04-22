@@ -262,7 +262,7 @@ Serializer gem`,
     }]
   },
   {
-    id: 'tpl_Ungw707duC',
+    id: 'tpl_nrj2p9AQ3Z',
     name: 'Uneed',
     modifications: [{
       name: 'Text',
@@ -288,6 +288,9 @@ Serializer gem`,
     }, {
       name: 'Text 2',
       defaultValue: 'Get your pages\nindexed in 48 hours',
+      meta: {
+        textarea: true
+      }
     }]
   }
 ]

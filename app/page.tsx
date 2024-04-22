@@ -56,7 +56,7 @@ function Home() {
   const previewUrl = useMemo(() => {
     const url = new URL("https://ogcool.vercel.app/preview")
     url.searchParams.set("name", template.name)
-    url.searchParams.set("d", btoa(JSON.stringify(deferredData)))
+    url.searchParams.set("d", btoa(JSON.stringify(deferredData).replace(/[^\x20-\x7F]/g, x => "\\u" + (`000${x.codePointAt(0)!.toString(16)}`).slice(-4))))
     return `https://dub.co/tools/metatags?url=${encodeURIComponent(url.toString())}`
   }, [deferredData])
   const urlData = useMemo(() => {

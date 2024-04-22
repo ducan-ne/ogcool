@@ -34,7 +34,7 @@ export default function ogcool<T extends TemplateId>(
   ) {
     const refinedOpts = omit(options, ["sdk", "disableTelemetry"])
     if (!isEmpty(refinedOpts)) {
-      url.searchParams.set("d", btoa(JSON.stringify(refinedOpts)))
+      url.searchParams.set("d", btoa(JSON.stringify(refinedOpts).replace(/[^\x20-\x7F]/g, x => "\\u" + (`000${x.codePointAt(0)!.toString(16)}`).slice(-4))))
     }
   }
   if (!options?.disableTelemetry && !(options?.sdk ?? true)) {

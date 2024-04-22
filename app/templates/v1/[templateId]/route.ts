@@ -13,7 +13,9 @@ const client = createClient({
 export const dynamic = 'force-dynamic' // defaults to auto
 export async function GET(request: NextRequest, ctx: { params: { templateId: string } }) {
   const logger = new BaselimeLogger({
-    ctx: {},
+    ctx: {
+      waitUntil: async () => {},
+    },
     apiKey: process.env.BASELIME_KEY as string,
     service: 'ogcool',
     dataset: 'prod',
