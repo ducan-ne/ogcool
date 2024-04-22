@@ -219,7 +219,7 @@ function Home() {
             <DialogTrigger>
               <Button className="mr-2 inline-flex items-center rounded-lg border bg-white px-5 py-2.5 text-center font-medium text-black text-xs hover:bg-[#eee]/90 focus:outline-none focus:ring-4 focus:ring-[#999]/50">
                 <Code className="-ml-1 mr-2 h-4 w-4" />
-                Connect
+                Embed
               </Button>
               <ModalOverlay
                 isDismissable
@@ -241,14 +241,14 @@ function Home() {
                       <>
                         <div className="flex justify-between pb-4">
                           <Heading className="text-2xl" slot="title">
-                            Connect to code using SDK
+                            Embed to code using SDK
                           </Heading>
                           <Button onPress={close} className="h-4 w-4">
                             <X className="fill-gray-500" />
                           </Button>
                         </div>
                         <p className="pb-4 font-normal text-slate-800 text-sm">
-                          The SDK provides a sugar syntax to connect ogcool to your codebase.
+                          The SDK provides a sugar syntax to embed ogcool to your codebase.
                           Typesafe, delightful, easy to use 💫.
                         </p>
                         <Suspense fallback="Loading...">
