@@ -11,10 +11,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "ogcool",
-  description: "Your ready to use open graph image generator",
+  description: "Your ready-to-use open graph image generator",
   openGraph: {
     title: "ogcool",
-    description: "Your ready to use open graph image generator",
+    description: "Your ready-to-use open graph image generator",
     images: ["https://ogcool.vercel.app/og.png"],
   },
 }
