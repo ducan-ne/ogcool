@@ -1,7 +1,9 @@
 {
   "name": "ogcool",
-  "version": "0.1.9",
-  "files": ["dist"],
+  "version": "0.1.10",
+  "files": [
+    "dist"
+  ],
   "main": "dist/sdk.js",
   "module": "dist/sdk.mjs",
   "types": "dist/sdk.d.ts",
