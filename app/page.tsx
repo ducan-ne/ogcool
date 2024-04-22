@@ -56,7 +56,15 @@ function Home() {
   const previewUrl = useMemo(() => {
     const url = new URL("https://ogcool.vercel.app/preview")
     url.searchParams.set("name", template.name)
-    url.searchParams.set("d", btoa(JSON.stringify(deferredData).replace(/[^\x20-\x7F]/g, x => "\\u" + (`000${x.codePointAt(0)!.toString(16)}`).slice(-4))))
+    url.searchParams.set(
+      "d",
+      btoa(
+        JSON.stringify(deferredData).replace(
+          /[^\x20-\x7F]/g,
+          (x) => `\\u${`000${x.codePointAt(0)!.toString(16)}`.slice(-4)}`,
+        ),
+      ),
+    )
     return `https://dub.co/tools/metatags?url=${encodeURIComponent(url.toString())}`
   }, [deferredData])
   const urlData = useMemo(() => {
@@ -151,7 +159,7 @@ function Home() {
                 width={760}
                 height={250}
                 className={cn(
-                  "aspect-[1.9/1] max-h-[40vh] rounded-xl border border-gray-200 opacity-100 lg:max-h-[400px] md:min-w-[760px] shadow-lg",
+                  "aspect-[1.9/1] max-h-[40vh] rounded-xl border border-gray-200 opacity-100 shadow-lg lg:max-h-[400px] md:min-w-[760px]",
                   {
                     "opacity-80": isLoading,
                   },
@@ -271,7 +279,7 @@ function Home() {
                 key={template.id}
                 // @ts-expect-error - RAC does not have a type for this
                 onChange={onFormUpdate}
-                className="flex flex-col gap-2"
+                className="flex flex-col"
               >
                 {template.modifications.map((modification) => {
                   return (

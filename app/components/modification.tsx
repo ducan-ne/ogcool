@@ -29,7 +29,7 @@ export const ModificationEdit = ({
   return (
     <TextField
       name={`[${modification.name}][${field}]`}
-      className="flex items-center justify-between gap-2 py-2"
+      className="relative flex items-center justify-between gap-2 py-2"
       type={modification.type || "text"}
       defaultValue={
         data.modifications?.find((i) => i.name === modification.name)?.text ??
@@ -38,12 +38,12 @@ export const ModificationEdit = ({
       isReadOnly={isReadOnly}
     >
       <Label
-        className="w-24 gap-3 truncate break-words font-medium text-gray-700 text-sm"
+        className="w-20 truncate break-words font-medium text-gray-700 text-sm"
         title={modification.name}
       >
         {modification.name}
       </Label>
-      <div className="relative h-8 w-full flex-1">
+      <div className="relative h-10 w-full flex-1">
         <InputType
           {...focusProps}
           className={cn(

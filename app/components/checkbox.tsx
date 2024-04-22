@@ -21,32 +21,31 @@ const checkboxStyles = tv({
   base: "flex gap-2 items-center group text-sm transition",
   variants: {
     isDisabled: {
-      false: "text-gray-800 dark:text-zinc-200",
-      true: "text-gray-300 dark:text-zinc-600 forced-colors:text-[GrayText]",
+      false: "text-gray-800",
+      true: "text-gray-300",
     },
   },
 })
 
 const boxStyles = tv({
   extend: focusRing,
-  base: "w-5 h-5 flex-shrink-0 rounded flex items-center justify-center border-2 transition cursor-pointer",
+  base: "w-5 h-5 rounded flex items-center justify-center border-2 transition cursor-pointer",
   variants: {
     isSelected: {
-      false:
-        "bg-white dark:bg-zinc-900 border-[--color] [--color:theme(colors.gray.400)] dark:[--color:colors.zinc-400)] group-pressed:[--color:theme(colors.gray.500)] dark:group-pressed:[--color:theme(colors.zinc.300)]",
-      true: "bg-[--color] border-[--color] [--color:theme(colors.gray.700)] group-pressed:[--color:theme(colors.gray.800)] dark:[--color:theme(colors.slate.300)] dark:group-pressed:[--color:theme(colors.slate.200)] forced-colors:![--color:Highlight]",
+      false: "bg-white",
+      true: "bg-[--color] border-[--color] [--color:theme(colors.gray.700)] group-pressed:[--color:theme(colors.gray.800)]",
     },
     isInvalid: {
-      true: "[--color:theme(colors.red.700)] dark:[--color:theme(colors.red.600)] forced-colors:![--color:Mark] group-pressed:[--color:theme(colors.red.800)] dark:group-pressed:[--color:theme(colors.red.700)]",
+      true: "[--color:theme(colors.red.700)]",
     },
     isDisabled: {
-      true: "[--color:theme(colors.gray.200)] dark:[--color:theme(colors.zinc.700)] forced-colors:![--color:GrayText]",
+      true: "[--color:theme(colors.gray.200)]",
     },
   },
 })
 
 const iconStyles =
-  "w-4 h-4 text-white group-disabled:text-gray-400 dark:text-slate-900 dark:group-disabled:text-slate-600 forced-colors:text-[HighlightText]"
+  "w-4 h-4 text-white group-disabled:text-gray-400 forced-colors:text-[HighlightText]"
 
 export function Checkbox(props: CheckboxProps) {
   return (

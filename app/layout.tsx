@@ -33,9 +33,10 @@ export default function RootLayout({
               "window.counterscale = {'q': [['set', 'siteId', 'ogcool'], ['trackPageview']] };",
           }}
         />
+        <meta name="viewport" content="width=device-width" />
         <script id="counterscale-script" src="https://tracking.graph.vn/tracker.js" defer />
       </head>
-      <body suppressHydrationWarning className={`min-h-screen bg-white font-sans antialiased ${inter.variable}`}>
+      <body suppressHydrationWarning className={`font-sans antialiased ${inter.variable}`}>
         <AppProvider>{children}</AppProvider>
       </body>
     </html>

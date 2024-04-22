@@ -63,7 +63,9 @@ export const Gallery = ({
 }: {
   onSelect: (id: string) => void
 }) => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({})
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: 'start',
+  })
 
   const { prevBtnDisabled, nextBtnDisabled, onPrevButtonClick, onNextButtonClick } =
     usePrevNextButtons(emblaApi)
@@ -140,11 +142,11 @@ export const Gallery = ({
                       </div>
                     </div>
                     <div className="overflow-hidden" ref={emblaRef}>
-                      <div className="scrollbar-hide embla__container flex h-[190px] w-[300px] scroll-px-10 gap-6 scroll-smooth p-4">
+                      <div className="scrollbar-hide flex gap-6 scroll-smooth p-4">
                         {Object.values(templates).map(({ id, name }, key) => (
                           <button
                             key={String(key)}
-                            className="embla__slide aspect-[1.9/1] h-full w-full rounded-xl pr-3 outline-0"
+                            className="aspect-[1.9/1] h-[190px] w-[300px] rounded-xl pr-3 outline-0 min-w-0 flex-[0_0_100%]"
                             type="button"
                             onClick={() => {
                               onSelect(id)

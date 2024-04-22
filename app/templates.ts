@@ -292,5 +292,23 @@ Serializer gem`,
         textarea: true
       }
     }]
+  },
+  {
+    id: 'tpl_B11s5ULETa',
+    name: 'OGCOOL',
+    modifications: [{
+      name: 'Image',
+      defaultValue: 'https://celwszfgcmidbdbinqaz.supabase.co/storage/v1/object/public/assets/org_2eaLD3Yj0x6axnxHEI8RWqWQWBC/s-Rji8ZLBlNgLxVF28YHH---icon.png',
+      type: 'url'
+    }, {
+      name: 'Text',
+      defaultValue: 'OGCOOL',
+    }, {
+      name: 'Description',
+      defaultValue: 'Your ready-to-use OG image templates. \nEmbed on your website in seconds.',
+      meta: {
+        textarea: true
+      }
+    }]
   }
 ]
