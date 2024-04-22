@@ -68,12 +68,12 @@ function Home() {
     return `https://dub.co/tools/metatags?url=${encodeURIComponent(url.toString())}`
   }, [deferredData])
   const urlData = useMemo(() => {
-    return ogcool(template.name as any, {
+    return `${ogcool(template.name as any, {
       modifications: deferredData.modifications as any,
       format: "svg",
       sdk: false,
       disableTelemetry: true,
-    })
+    })}&t=${Date.now()}`
   }, [deferredData, template.name])
   const [imageUrl] = useDebounce(urlData, 500)
 
@@ -161,7 +161,7 @@ function Home() {
                 className={cn(
                   "aspect-[1.9/1] max-h-[40vh] rounded-xl border border-gray-200 opacity-100 shadow-lg lg:max-h-[400px] md:min-w-[760px]",
                   {
-                    "opacity-80": isLoading,
+                    "opacity-60": isLoading,
                   },
                 )}
                 loading="eager"
