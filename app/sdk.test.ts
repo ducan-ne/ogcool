@@ -1,26 +1,26 @@
-import { expect, test } from 'bun:test'
-import ogcool from '@/app/sdk'
+import { expect, test } from "bun:test"
+import ogcool from "@/app/sdk"
 
-test('sdk', () => {
+test("sdk", () => {
   expect(
-    ogcool('UnJS', {
+    ogcool("UnJS", {
       modifications: [
         {
-          name: 'Description',
-          text: 'Hello world',
+          name: "Description",
+          text: "Hello world",
         },
       ],
     }),
   ).toMatchSnapshot()
 })
 
-test('sdk:telemetry-disabled', () => {
+test("sdk:telemetry-disabled", () => {
   expect(
-    ogcool('UnJS', {
+    ogcool("UnJS", {
       modifications: [
         {
-          name: 'Description',
-          text: 'Hello world',
+          name: "Description",
+          text: "Hello world",
         },
       ],
       disableTelemetry: true,
@@ -28,6 +28,17 @@ test('sdk:telemetry-disabled', () => {
   ).toMatchSnapshot()
 })
 
-test('sdk:empty', () => {
-  expect(ogcool('UnJS')).toMatchSnapshot()
+test("sdk:empty", () => {
+  expect(ogcool("UnJS")).toMatchSnapshot()
 })
+
+// biome-ignore lint/correctness/noUnusedVariables: <explanation>
+function testType() {
+  ogcool("Beta update x", {
+    modifications: [
+      {
+        name: "Author name",
+      },
+    ],
+  })
+}

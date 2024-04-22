@@ -31,7 +31,7 @@ import { Toaster, toast } from "sonner"
 import { useDebounce } from "use-debounce"
 import { Gallery } from "./components/gallery"
 import { ModificationEdit } from "./components/modification"
-import { templates } from "./templates"
+import { type Modification as RefinedModifications, templates } from "./templates"
 
 const ConnectDynamic = dynamic(() => import("@/app/components/connect").then((m) => m.Connect), {
   ssr: false,
@@ -93,7 +93,9 @@ function Home() {
       )
         .map(([name, info]) => {
           const isVisible = info.visible === "on"
-          const modification = template.modifications.find((item) => item.name === name)
+          const modification = template.modifications.find(
+            (item) => item.name === name,
+          ) as RefinedModifications
           const inData = data.modifications?.find((item) => item.name === name)
           const valueKey = !modification?.type || modification?.type === "text" ? "text" : "src"
           const previousValue = {
@@ -138,7 +140,7 @@ function Home() {
           <Gallery
             onSelect={(id) => {
               setTemplateId(id)
-              setData({ templateId: id })
+              setData({ templateId: id, modifications: [] })
             }}
           />
           <div className="flex h-full flex-1 shrink-0 flex-col items-center justify-center overflow-hidden">
@@ -285,7 +287,7 @@ function Home() {
                   return (
                     <ModificationEdit
                       key={template.id + modification.name}
-                      data={deferredData}
+                      data={data}
                       template={template}
                       modification={modification}
                       onUpdate={onFormUpdate}

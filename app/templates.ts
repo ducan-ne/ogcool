@@ -16,7 +16,7 @@ export type Template = {
   modifications: Modification[]
 }
 
-export const templates: Template[] = [
+export const templates = [
   {
     id: "tpl_jNvsOYr0cr",
     name: "UnJS",
@@ -339,4 +339,4 @@ Serializer gem`,
       },
     ],
   },
-]
+] as const satisfies Template[]
