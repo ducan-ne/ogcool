@@ -31,11 +31,13 @@ export async function GET(request: NextRequest, ctx: { params: { templateId: str
     })
     : {}
   assert(Array.isArray(modifications) || typeof modifications === 'undefined')
-  logger.info('GET /templates/v1/[templateId]', {
-    templateId: ctx.params.templateId,
-    sdk: searchParams.get('sdk'),
-    format,
-  })
+  if (process.env.BASELIME_KEY) {
+    logger.info('GET /templates/v1/[templateId]', {
+      templateId: ctx.params.templateId,
+      sdk: searchParams.get('sdk'),
+      format,
+    })
+  }
   return new Response(null, {
     headers: {
       Location: await client.generateImageSignedUrl(ctx.params.templateId, {
