@@ -18,37 +18,6 @@ export type Template = {
 
 export const templates = [
   {
-    id: "tpl_jNvsOYr0cr",
-    name: "UnJS",
-    modifications: [
-      {
-        name: "Text",
-        defaultValue: "Package",
-      },
-      {
-        name: "Name",
-        defaultValue: "unjs/automd",
-      },
-      {
-        name: "Description",
-        defaultValue: "Automated markdown maintainer",
-        meta: {
-          textarea: true,
-        },
-      },
-      {
-        name: "Logo 1",
-        type: "url",
-        defaultValue: "https://unjs.io/assets/logos/automd.svg",
-      },
-      {
-        name: "Logo 2",
-        type: "url",
-        defaultValue: "https://unjs.io/favicon.svg",
-      },
-    ],
-  },
-  {
     id: "tpl_0ybILPlWHj",
     name: "EPICREACT.DEV",
     modifications: [
@@ -72,6 +41,41 @@ export const templates = [
         type: "url",
         defaultValue:
           "https://res.cloudinary.com/kentcdodds-com/image/upload/w_256,q_auto,f_auto/kent/profile-transparent",
+      },
+    ],
+  },
+  {
+    id: "tpl_Im2qA9QSvt",
+    name: "Branded logo",
+    modifications: [
+      {
+        name: "Logo",
+        type: "url",
+        defaultValue:
+          "https://celwszfgcmidbdbinqaz.supabase.co/storage/v1/object/public/assets/org_2eaLD3Yj0x6axnxHEI8RWqWQWBC/BlA46GIwmds-Yrxgp5OqL---logo.svg",
+      },
+      {
+        name: "Text",
+        defaultValue: "Nuxt vs. Next: Which Should You\nChoose for Your Project？",
+        meta: {
+          textarea: true,
+        },
+      },
+    ],
+  },
+  {
+    id: "tpl_TnllPg0CkP",
+    name: "Wave",
+    modifications: [
+      {
+        name: "Text",
+        type: "text",
+        defaultValue: `Everything you need to know
+about the Active Model
+Serializer gem`,
+        meta: {
+          textarea: true,
+        },
       },
     ],
   },
@@ -159,37 +163,33 @@ export const templates = [
     ],
   },
   {
-    id: "tpl_Im2qA9QSvt",
-    name: "Branded logo",
+    id: "tpl_jNvsOYr0cr",
+    name: "UnJS",
     modifications: [
       {
-        name: "Logo",
+        name: "Text",
+        defaultValue: "Package",
+      },
+      {
+        name: "Name",
+        defaultValue: "unjs/automd",
+      },
+      {
+        name: "Description",
+        defaultValue: "Automated markdown maintainer",
+        meta: {
+          textarea: true,
+        },
+      },
+      {
+        name: "Logo 1",
         type: "url",
-        defaultValue:
-          "https://celwszfgcmidbdbinqaz.supabase.co/storage/v1/object/public/assets/org_2eaLD3Yj0x6axnxHEI8RWqWQWBC/BlA46GIwmds-Yrxgp5OqL---logo.svg",
+        defaultValue: "https://unjs.io/assets/logos/automd.svg",
       },
       {
-        name: "Text",
-        defaultValue: "Nuxt vs. Next: Which Should You\nChoose for Your Project？",
-        meta: {
-          textarea: true,
-        },
-      },
-    ],
-  },
-  {
-    id: "tpl_TnllPg0CkP",
-    name: "Wave",
-    modifications: [
-      {
-        name: "Text",
-        type: "text",
-        defaultValue: `Everything you need to know
-about the Active Model
-Serializer gem`,
-        meta: {
-          textarea: true,
-        },
+        name: "Logo 2",
+        type: "url",
+        defaultValue: "https://unjs.io/favicon.svg",
       },
     ],
   },
