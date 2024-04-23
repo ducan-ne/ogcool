@@ -65,7 +65,7 @@ export const templates = [
       },
       {
         name: "Author name",
-        defaultValue: "Kent Doods",
+        defaultValue: "Kent Dodds",
       },
       {
         name: "Author avatar",

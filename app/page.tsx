@@ -45,7 +45,7 @@ function Home() {
     templateId: string
   }>(searchParams.get("d") ? JSON.parse(atob(searchParams.get("d")!)) : {})
   const [templateId, setTemplateId] = useState(
-    searchParams.get("templateId") ?? data.templateId ?? "tpl_jNvsOYr0cr",
+    searchParams.get("templateId") ?? data.templateId ?? "tpl_0ybILPlWHj",
   )
   const template = useMemo(
     () => templates.find((template) => template.id === templateId)!,
