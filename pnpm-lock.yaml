@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   bannerify-js:
-    specifier: ^0.0.11
-    version: 0.0.11
+    specifier: ^0.0.12
+    version: 0.0.12
 
 devDependencies:
   '@baselime/edge-logger':
@@ -3614,8 +3614,8 @@ packages:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
     dev: true
 
-  /bannerify-js@0.0.11:
-    resolution: {integrity: sha512-QAU5QCYCfbyWl5UoWj2z89Vvv0WNeo82SOODmGHAoSZIWDZrKNaVhQ5+OH0nBH1m9Agvu1/IM+WiOXbDjrvexQ==}
+  /bannerify-js@0.0.12:
+    resolution: {integrity: sha512-2ynxyBQdZ/ok6P8pdBKMxF/ILQVt6RmozFAVcsBbQnjUXVhWpALNOqf4DoU89lBj0nCgJqrN8mmNmohVGhQhQw==}
     dev: false
 
   /binary-extensions@2.2.0:

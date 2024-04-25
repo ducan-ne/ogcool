@@ -1,8 +1,8 @@
 import assert from 'node:assert'
+import * as crypto from 'node:crypto'
+import { BaselimeLogger } from '@baselime/edge-logger'
 import { type Modification, createClient } from 'bannerify-js'
 import type { NextRequest } from 'next/server'
-import { BaselimeLogger } from '@baselime/edge-logger'
-import * as crypto from 'node:crypto'
 
 const client = createClient({
   apiKey: '',
@@ -26,9 +26,9 @@ export async function GET(request: NextRequest, ctx: { params: { templateId: str
   const d = searchParams.get('d')
   const { modifications = [], format = 'png' } = d
     ? (JSON.parse(atob(d)) as {
-      modifications?: Modification[]
-      format?: 'svg' | 'png'
-    })
+        modifications?: Modification[]
+        format?: 'svg' | 'png'
+      })
     : {}
   assert(Array.isArray(modifications) || typeof modifications === 'undefined')
   if (process.env.BASELIME_KEY) {
@@ -37,6 +37,7 @@ export async function GET(request: NextRequest, ctx: { params: { templateId: str
       sdk: searchParams.get('sdk'),
       format,
     })
+    logger.flush()
   }
   return new Response(null, {
     headers: {
