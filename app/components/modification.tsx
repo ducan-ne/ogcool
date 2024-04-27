@@ -4,6 +4,7 @@ import { cn } from "@/app/utils"
 import type { Modification as Mod } from "bannerify-js"
 import { useFocus } from "react-aria"
 import { Input, Label, TextArea, TextField } from "react-aria-components"
+import { IconRenderer } from "./icon-renderer"
 
 export const ModificationEdit = ({
   data,
@@ -21,10 +22,9 @@ export const ModificationEdit = ({
   const defaultVisible = modification.visible ?? true
   const field = !modification.type || modification.type === 'text' ? 'text' : 'src'
   const inData = data.modifications?.find((i) => i.name === modification.name)
-  const isReadOnly =
-    inData && typeof inData.visible !== "undefined" ? !inData.visible : !defaultVisible
+  const isReadOnly = inData && typeof inData.visible !== 'undefined' ? !inData.visible : !defaultVisible
   const { focusProps } = useFocus({})
-  const InputType = modification.meta?.textarea ? TextArea : Input
+  const InputType = modification.meta?.textarea ? TextArea : modification.meta?.icon ? IconRenderer : Input
 
   return (
     <TextField
@@ -59,7 +59,8 @@ export const ModificationEdit = ({
               'px-2 py-0.5 focus:absolute focus:top-0 focus:z-10 focus:h-24': modification.meta?.textarea,
             }
           )}
-        />
+        >
+        </InputType>
       </div>
     </TextField>
   )

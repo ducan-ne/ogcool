@@ -6,6 +6,7 @@
   "javascript": {
     "formatter": {
       "semicolons": "asNeeded",
+      "jsxQuoteStyle": "single",
       "quoteStyle": "single"
     }
   },

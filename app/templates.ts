@@ -7,6 +7,7 @@ export type Modification = {
   visible?: boolean
   meta?: {
     textarea?: boolean
+    icon?: boolean
   }
 }
 
@@ -190,6 +191,14 @@ Serializer gem`,
         name: "Logo 2",
         type: "url",
         defaultValue: "https://unjs.io/favicon.svg",
+      },
+      {
+        name: "Icon",
+        defaultValue: "Menu",
+        visible: true,
+        meta: {
+          icon: true,
+        },
       },
     ],
   },
