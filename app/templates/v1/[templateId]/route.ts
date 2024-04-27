@@ -1,13 +1,10 @@
 import assert from 'node:assert'
 import * as crypto from 'node:crypto'
 import { BaselimeLogger } from '@baselime/edge-logger'
-import { type Modification, createClient } from 'bannerify-js'
+import { Bannerify, type Modification } from 'bannerify-js'
 import type { NextRequest } from 'next/server'
 
-const client = createClient({
-  apiKey: '',
-  // baseUrl: 'http://localhost:8788/api/v1',
-})
+const client = new Bannerify('')
 
 // export const runtime = "edge"
 export const dynamic = 'force-dynamic' // defaults to auto

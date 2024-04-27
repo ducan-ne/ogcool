@@ -27,7 +27,7 @@
     "update-sdk": "tsup && npm version patch && npm publish"
   },
   "dependencies": {
-    "bannerify-js": "^0.0.12"
+    "bannerify-js": "^0.0.15"
   },
   "devDependencies": {
     "@baselime/edge-logger": "^0.3.2",

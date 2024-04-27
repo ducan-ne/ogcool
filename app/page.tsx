@@ -1,13 +1,13 @@
-"use client"
-import ogcool from "@/app/sdk"
-import { cn } from "@/app/utils"
-import { X } from "@phosphor-icons/react"
-import type { Modification } from "bannerify-js"
-import serialize from "form-serialize"
-import { Code, Edit, MediaImage, Send } from "iconoir-react"
-import dynamic from "next/dynamic"
-import Image from "next/image"
-import { useSearchParams } from "next/navigation"
+'use client'
+import ogcool from '@/app/sdk'
+import { cn } from '@/app/utils'
+import { X } from '@phosphor-icons/react'
+import type { Modification } from 'bannerify-js'
+import serialize from 'form-serialize'
+import { Code, Edit, MediaImage, Send } from 'iconoir-react'
+import dynamic from 'next/dynamic'
+import Image from 'next/image'
+import { useSearchParams } from 'next/navigation'
 import {
   Suspense,
   useCallback,
@@ -16,7 +16,7 @@ import {
   useMemo,
   useRef,
   useState,
-} from "react"
+} from 'react'
 import {
   Button,
   Dialog,
@@ -25,15 +25,15 @@ import {
   Heading,
   Modal,
   ModalOverlay,
-} from "react-aria-components"
-import { isDeepEqual, omit } from "remeda"
-import { Toaster, toast } from "sonner"
-import { useDebounce } from "use-debounce"
-import { Gallery } from "./components/gallery"
-import { ModificationEdit } from "./components/modification"
-import { type Modification as RefinedModifications, templates } from "./templates"
+} from 'react-aria-components'
+import { isDeepEqual, omit } from 'remeda'
+import { Toaster, toast } from 'sonner'
+import { useDebounce } from 'use-debounce'
+import { Gallery } from './components/gallery'
+import { ModificationEdit } from './components/modification'
+import { type Modification as RefinedModifications, templates } from './templates'
 
-const ConnectDynamic = dynamic(() => import("@/app/components/connect").then((m) => m.Connect), {
+const ConnectDynamic = dynamic(() => import('@/app/components/connect').then((m) => m.Connect), {
   ssr: false,
   loading: () => <span>Loading...</span>,
 })
@@ -43,9 +43,9 @@ function Home() {
   const [data, setData] = useState<{
     modifications?: Modification[]
     templateId: string
-  }>(searchParams.get("d") ? JSON.parse(atob(searchParams.get("d")!)) : {})
+  }>(searchParams.get('d') ? JSON.parse(atob(searchParams.get('d')!)) : {})
   const [templateId, setTemplateId] = useState(
-    searchParams.get("templateId") ?? data.templateId ?? "tpl_0ybILPlWHj",
+    searchParams.get('templateId') ?? data.templateId ?? 'tpl_0ybILPlWHj',
   )
   const template = useMemo(
     () => templates.find((template) => template.id === templateId)!,
@@ -54,10 +54,10 @@ function Home() {
   const [isLoading, setIsLoading] = useState(false)
   const deferredData = useDeferredValue(data)
   const previewUrl = useMemo(() => {
-    const url = new URL("https://ogcool.vercel.app/preview")
-    url.searchParams.set("name", template.name)
+    const url = new URL('https://ogcool.vercel.app/preview')
+    url.searchParams.set('name', template.name)
     url.searchParams.set(
-      "d",
+      'd',
       btoa(
         JSON.stringify(deferredData).replace(
           /[^\x20-\x7F]/g,
@@ -70,7 +70,7 @@ function Home() {
   const urlData = useMemo(() => {
     return `${ogcool(template.name as any, {
       modifications: deferredData.modifications as any,
-      format: "svg",
+      format: 'svg',
       sdk: false,
       disableTelemetry: true,
     })}&t=${Date.now()}`
@@ -92,12 +92,12 @@ function Home() {
         serialize(formRef.current!, { hash: true }) as Record<string, Record<string, string>>,
       )
         .map(([name, info]) => {
-          const isVisible = info.visible === "on"
+          const isVisible = info.visible === 'on'
           const modification = template.modifications.find(
             (item) => item.name === name,
           ) as RefinedModifications
           const inData = data.modifications?.find((item) => item.name === name)
-          const valueKey = !modification?.type || modification?.type === "text" ? "text" : "src"
+          const valueKey = !modification?.type || modification?.type === 'text' ? 'text' : 'src'
           const previousValue = {
             name,
             visible: inData?.visible ?? modification?.visible ?? true,
@@ -106,7 +106,7 @@ function Home() {
 
           // remove visible key if it's not changed to reduce payload
           const visible =
-            typeof info.visible === "undefined"
+            typeof info.visible === 'undefined'
               ? false
               : isVisible !== previousValue.visible
                 ? isVisible
@@ -122,11 +122,11 @@ function Home() {
             ...newValue,
             _ok:
               !isDeepEqual(previousValue, newValue) &&
-              (newValue[valueKey] || typeof newValue.visible !== "undefined"),
+              (newValue[valueKey] || typeof newValue.visible !== 'undefined'),
           } as Modification & { _ok: boolean }
         })
         .filter((m) => m._ok)
-        .map((m) => omit(m, ["_ok"]))
+        .map((m) => omit(m, ['_ok']))
 
       setData({ modifications: newModifications, templateId })
     }, 0)
@@ -148,7 +148,7 @@ function Home() {
               <Button
                 onPress={() => {
                   navigator.clipboard.writeText(window.location.href)
-                  toast("Copied")
+                  toast('Copied')
                 }}
                 className="w-fit outline-0"
               >
@@ -162,9 +162,9 @@ function Home() {
                 width={760}
                 height={250}
                 className={cn(
-                  "aspect-[1.9/1] max-h-[40vh] rounded-xl border border-gray-200 opacity-100 shadow-lg lg:max-h-[400px] md:min-w-[760px]",
+                  'aspect-[1.9/1] max-h-[40vh] rounded-xl border border-gray-200 opacity-100 shadow-lg lg:max-h-[400px] md:min-w-[760px]',
                   {
-                    "opacity-60": isLoading,
+                    'opacity-60': isLoading,
                   },
                 )}
                 loading="eager"
@@ -182,7 +182,7 @@ function Home() {
           <div className="grid grid-cols-2 items-center gap-2 p-6">
             <Button
               type="button"
-              className="mr-2 inline-flex items-center rounded-lg bg-black px-5 py-2.5 text-center font-medium text-white text-xs hover:bg-[#333]/90 focus:outline-none focus:ring-4 focus:ring-[#999]/50"
+              className="!bg-black mr-2 inline-flex items-center rounded-lg px-5 py-2.5 text-center font-medium text-white text-xs hover:bg-[#333]/90 focus:outline-none focus:ring-4 focus:ring-[#999]/50"
               onPress={() => {
                 navigator.clipboard.writeText(
                   ogcool(template!.name, {
@@ -191,7 +191,7 @@ function Home() {
                     sdk: false,
                   }),
                 )
-                toast("Copied to clipboard")
+                toast('Copied to clipboard')
               }}
             >
               <MediaImage className="-ml-1 mr-2 h-4 w-4" />
@@ -208,9 +208,9 @@ function Home() {
                     templateId,
                   } as any),
                 )
-                url.pathname = "/"
+                url.pathname = '/'
                 navigator.clipboard.writeText(url.toString())
-                toast("Copied to clipboard")
+                toast('Copied to clipboard')
               }}
             >
               <Edit className="-ml-1 mr-2 h-4 w-4" />
@@ -226,15 +226,15 @@ function Home() {
                 isDismissable
                 className={({ isEntering, isExiting }) =>
                   `fixed inset-0 z-10 flex min-h-full items-center justify-center overflow-y-auto bg-black/25 p-4 text-center${
-                    isEntering ? "fade-in animate-in duration-300 ease-out" : ""
-                  }${isExiting ? "fade-out animate-out duration-200 ease-in" : ""}`
+                    isEntering ? 'fade-in animate-in duration-300 ease-out' : ''
+                  }${isExiting ? 'fade-out animate-out duration-200 ease-in' : ''}`
                 }
               >
                 <Modal
                   className={({ isEntering, isExiting }) =>
                     `min-h-[60vh] w-full max-w-[800px] overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl${
-                      isEntering ? "zoom-in-95 animate-in duration-300 ease-out" : ""
-                    }${isExiting ? "zoom-out-95 animate-out duration-200 ease-in" : ""}`
+                      isEntering ? 'zoom-in-95 animate-in duration-300 ease-out' : ''
+                    }${isExiting ? 'zoom-out-95 animate-out duration-200 ease-in' : ''}`
                   }
                 >
                   <Dialog role="alertdialog" className="relative outline-none">

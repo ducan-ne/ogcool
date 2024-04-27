@@ -1,21 +1,21 @@
-import { AppProvider } from "@/app/app-provider"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
+import { AppProvider } from '@/app/app-provider'
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
 
 const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
 })
 
 export const metadata: Metadata = {
-  title: "ogcool",
-  description: "Your ready-to-use open graph image generator",
+  title: 'ogcool',
+  description: 'Your ready-to-use open graph image generator',
   openGraph: {
-    title: "ogcool",
-    description: "Your ready-to-use open graph image generator",
-    images: ["https://ogcool.vercel.app/og.png"],
+    title: 'ogcool',
+    description: 'Your ready-to-use open graph image generator',
+    images: ['https://ogcool.vercel.app/og.png'],
   },
 }
 
@@ -38,6 +38,11 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning className={`font-sans antialiased ${inter.variable}`}>
         <AppProvider>{children}</AppProvider>
+        <script
+          defer
+          data-url="https://devhunt.org/tool/ogcool"
+          src="https://cdn.jsdelivr.net/gh/sidiDev/devhunt-banner/indexV0.js"
+        />
       </body>
     </html>
   )
