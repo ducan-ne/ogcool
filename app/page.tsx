@@ -133,32 +133,32 @@ function Home() {
   }, [template, data])
 
   return (
-    <main className="h-max min-h-screen bg-slate-50">
-      <Toaster position="top-center" />
-      <div className="flex h-screen flex-col md:flex-row">
-        <div className="flex h-[50vh] flex-1 flex-col gap-2 overflow-scroll p-6 md:h-screen">
+    <main className='h-max min-h-screen bg-slate-50'>
+      <Toaster position='top-center' />
+      <div className='flex h-screen flex-col md:flex-row'>
+        <div className='flex h-[50vh] flex-1 flex-col gap-2 overflow-scroll p-6 md:h-screen'>
           <Gallery
             onSelect={(id) => {
               setTemplateId(id)
               setData({ templateId: id, modifications: [] })
             }}
           />
-          <div className="flex h-full flex-1 shrink-0 flex-col items-center justify-center overflow-hidden">
-            <div className="flex flex-col gap-2">
+          <div className='flex h-full flex-1 shrink-0 flex-col items-center justify-center overflow-hidden'>
+            <div className='flex flex-col gap-2'>
               <Button
                 onPress={() => {
                   navigator.clipboard.writeText(window.location.href)
                   toast('Copied')
                 }}
-                className="w-fit outline-0"
+                className='w-fit outline-0'
               >
-                <h2 className="select-none font-medium text-base text-gray-900">{template.name}</h2>
+                <h2 className='select-none font-medium text-base text-gray-900'>{template.name}</h2>
               </Button>
               <Image
                 suppressHydrationWarning
-                fetchPriority="high"
+                fetchPriority='high'
                 src={imageUrl}
-                alt="preview"
+                alt='preview'
                 width={760}
                 height={250}
                 className={cn(
@@ -167,22 +167,22 @@ function Home() {
                     'opacity-60': isLoading,
                   },
                 )}
-                loading="eager"
+                loading='eager'
                 onLoad={() => {
                   setIsLoading(false)
                 }}
-                placeholder="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mM8Xw8AAiMBUBHOEisAAAAASUVORK5CYII="
+                placeholder='data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mM8Xw8AAiMBUBHOEisAAAAASUVORK5CYII='
                 unoptimized={true}
               />
             </div>
-            <div className="h-[30%]" />
+            <div className='h-[30%]' />
           </div>
         </div>
-        <div className="flex h-[50vh] flex-col divide-y overflow-scroll bg-white shadow-lg md:h-screen">
-          <div className="grid grid-cols-2 items-center gap-2 p-6">
+        <div className='flex h-[50vh] flex-col divide-y overflow-scroll bg-white shadow-lg md:h-screen'>
+          <div className='grid grid-cols-2 items-center gap-2 p-6'>
             <Button
-              type="button"
-              className="!bg-black mr-2 inline-flex items-center rounded-lg px-5 py-2.5 text-center font-medium text-white text-xs hover:bg-[#333]/90 focus:outline-none focus:ring-4 focus:ring-[#999]/50"
+              type='button'
+              className='!bg-black mr-2 inline-flex items-center rounded-lg px-5 py-2.5 text-center font-medium text-white text-xs hover:bg-[#333]/90 focus:outline-none focus:ring-4 focus:ring-[#999]/50'
               onPress={() => {
                 navigator.clipboard.writeText(
                   ogcool(template!.name, {
@@ -194,11 +194,11 @@ function Home() {
                 toast('Copied to clipboard')
               }}
             >
-              <MediaImage className="-ml-1 mr-2 h-4 w-4" />
+              <MediaImage className='-ml-1 mr-2 h-4 w-4' />
               Copy (URL)
             </Button>
             <Button
-              className="mr-2 inline-flex items-center rounded-lg border bg-white px-5 py-2.5 text-center font-medium text-black text-xs hover:bg-[#eee]/90 focus:outline-none focus:ring-4 focus:ring-[#999]/50"
+              className='mr-2 inline-flex items-center rounded-lg border bg-white px-5 py-2.5 text-center font-medium text-black text-xs hover:bg-[#eee]/90 focus:outline-none focus:ring-4 focus:ring-[#999]/50'
               onPress={() => {
                 const url = new URL(
                   ogcool(template!.name, {
@@ -213,13 +213,13 @@ function Home() {
                 toast('Copied to clipboard')
               }}
             >
-              <Edit className="-ml-1 mr-2 h-4 w-4" />
+              <Edit className='-ml-1 mr-2 h-4 w-4' />
               Copy (editor)
             </Button>
 
             <DialogTrigger>
-              <Button className="mr-2 inline-flex items-center rounded-lg border bg-white px-5 py-2.5 text-center font-medium text-black text-xs hover:bg-[#eee]/90 focus:outline-none focus:ring-4 focus:ring-[#999]/50">
-                <Code className="-ml-1 mr-2 h-4 w-4" />
+              <Button className='mr-2 inline-flex items-center rounded-lg border bg-white px-5 py-2.5 text-center font-medium text-black text-xs hover:bg-[#eee]/90 focus:outline-none focus:ring-4 focus:ring-[#999]/50'>
+                <Code className='-ml-1 mr-2 h-4 w-4' />
                 Embed
               </Button>
               <ModalOverlay
@@ -237,22 +237,22 @@ function Home() {
                     }${isExiting ? 'zoom-out-95 animate-out duration-200 ease-in' : ''}`
                   }
                 >
-                  <Dialog role="alertdialog" className="relative outline-none">
+                  <Dialog role='alertdialog' className='relative outline-none'>
                     {({ close }) => (
                       <>
-                        <div className="flex justify-between pb-4">
-                          <Heading className="text-2xl" slot="title">
+                        <div className='flex justify-between pb-4'>
+                          <Heading className='text-2xl' slot='title'>
                             Embed to code using SDK
                           </Heading>
-                          <Button onPress={close} className="h-4 w-4">
-                            <X className="fill-gray-500" />
+                          <Button onPress={close} className='h-4 w-4'>
+                            <X className='fill-gray-500' />
                           </Button>
                         </div>
-                        <p className="pb-4 font-normal text-slate-800 text-sm">
+                        <p className='pb-4 font-normal text-slate-800 text-sm'>
                           The SDK provides a sugar syntax to embed ogcool to your codebase.
                           Typesafe, delightful, easy to use 💫.
                         </p>
-                        <Suspense fallback="Loading...">
+                        <Suspense fallback='Loading...'>
                           <ConnectDynamic
                             modifications={data?.modifications || []}
                             templateName={template.name}
@@ -265,24 +265,24 @@ function Home() {
               </ModalOverlay>
             </DialogTrigger>
             <a
-              className="mr-2 inline-flex items-center rounded-lg border bg-white px-5 py-2.5 text-center font-medium text-black text-xs hover:bg-[#eee]/90 focus:outline-none focus:ring-4 focus:ring-[#999]/50"
+              className='mr-2 inline-flex items-center rounded-lg border bg-white px-5 py-2.5 text-center font-medium text-black text-xs hover:bg-[#eee]/90 focus:outline-none focus:ring-4 focus:ring-[#999]/50'
               href={previewUrl}
-              target="_blank"
-              rel="noreferrer"
+              target='_blank'
+              rel='noreferrer'
             >
-              <Send className="-ml-1 mr-2 h-4 w-4" />
+              <Send className='-ml-1 mr-2 h-4 w-4' />
               Preview
             </a>
           </div>
-          <div className="p-6">
-            <div className="font-medium text-base text-gray-900">Modifications</div>
-            <div className="mt-4 flex flex-col gap-3">
+          <div className='p-6'>
+            <div className='font-medium text-base text-gray-900'>Modifications</div>
+            <div className='mt-4 flex flex-col gap-3'>
               <Form
                 ref={formRef}
                 key={template.id}
                 // @ts-expect-error - RAC does not have a type for this
                 onChange={onFormUpdate}
-                className="flex flex-col"
+                className='flex flex-col'
               >
                 {template.modifications.map((modification) => {
                   return (

@@ -25,7 +25,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang='en' suppressHydrationWarning>
       <head suppressHydrationWarning>
         <script
           dangerouslySetInnerHTML={{
@@ -33,16 +33,16 @@ export default function RootLayout({
               "window.counterscale = {'q': [['set', 'siteId', 'ogcool'], ['trackPageview']] };",
           }}
         />
-        <meta name="viewport" content="width=device-width" />
-        <script id="counterscale-script" src="https://tracking.graph.vn/tracker.js" defer />
+        <meta name='viewport' content='width=device-width' />
+        <script id='counterscale-script' src='https://tracking.graph.vn/tracker.js' defer />
       </head>
       <body suppressHydrationWarning className={`font-sans antialiased ${inter.variable}`}>
         <AppProvider>{children}</AppProvider>
-        <script
+        {/*<script
           defer
           data-url="https://devhunt.org/tool/ogcool"
           src="https://cdn.jsdelivr.net/gh/sidiDev/devhunt-banner/indexV0.js"
-        />
+        />*/}
       </body>
     </html>
   )
