@@ -201,11 +201,11 @@ export const Gallery = ({
           </div>
         </div>
         <div className='overflow-hidden' ref={emblaRef}>
-          <div className='scrollbar-hide embla__container flex h-[190px] w-[300px] scroll-px-10 gap-6 scroll-smooth p-4'>
+          <div className='scrollbar-hide embla__container flex scroll-px-10 gap-6 scroll-smooth p-4 w-full'>
             {Object.values(templates).map(({ id, name }, key) => (
               <button
                 key={String(key)}
-                className='embla__slide aspect-[1.9/1] h-full w-full rounded-xl pr-3 outline-0'
+                className='embla__slide aspect-[1.9/1] rounded-xl pr-3 outline-0 h-[190px] min-w-[300px]'
                 type='button'
                 onClick={() => {
                   onSelect(id)
