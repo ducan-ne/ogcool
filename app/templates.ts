@@ -245,7 +245,7 @@ Serializer gem`,
       },
     ],
   },
-  {
+  /* {
     id: 'tpl_jNvsOYr0cr',
     name: 'UnJS',
     modifications: [
@@ -283,7 +283,7 @@ Serializer gem`,
         },
       },
     ],
-  },
+  }, */
   {
     id: 'tpl_yIru886ppx',
     name: 'Beta update',

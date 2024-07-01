@@ -219,7 +219,7 @@ export const Gallery = ({
                   loading='lazy'
                   src={ogcool(name, {
                     sdk: false,
-                    format: 'svg',
+                    // format: 'svg',
                   })}
                   alt='preview'
                   className='aspect-[1.9/1] cursor-pointer rounded-xl shadow-lg transition-all hover:scale-110'
