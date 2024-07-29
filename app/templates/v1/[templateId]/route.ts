@@ -4,7 +4,7 @@ import { BaselimeLogger } from '@baselime/edge-logger'
 import { Bannerify, type Modification } from 'bannerify-js'
 import type { NextRequest } from 'next/server'
 
-const client = new Bannerify('')
+const client = new Bannerify(process.env.BANNERIFY_KEY as string)
 
 // export const runtime = "edge"
 export const dynamic = 'force-dynamic' // defaults to auto

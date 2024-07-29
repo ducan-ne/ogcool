@@ -7,11 +7,11 @@ Powered by [`@vercel/og`](https://vercel.com/docs/functions/edge-functions/og-im
 
 ## Examples
 
-### UnJS
+### Epic React
 
-![image](https://ogcool.vercel.app/templates/v1/tpl_jNvsOYr0cr?d=eyJtb2RpZmljYXRpb25zIjpbXX0%3D)
+![image](https://ogcool.vercel.app/templates/v1/tpl_0ybILPlWHj?d=eyJtb2RpZmljYXRpb25zIjpbXX0%3D)
 
-Try it for yourself: https://ogcool.vercel.app/?d=eyJtb2RpZmljYXRpb25zIjpbXSwidGVtcGxhdGVJZCI6InRwbF9qTnZzT1lyMGNyIn0%3D ([OG image preview](https://dub.co/tools/metatags?url=https%3A%2F%2Fogcool.vercel.app%2Fpreview%3Fname%3DUnJS%26d%3DeyJtb2RpZmljYXRpb25zIjpbXSwidGVtcGxhdGVJZCI6InRwbF9qTnZzT1lyMGNyIn0%253D))
+Try it for yourself: https://ogcool.vercel.app/?d=eyJ0ZW1wbGF0ZUlkIjoidHBsXzB5YklMUGxXSGoifQ%3D%3D ([OG image preview](https://dub.co/tools/metatags?url=https://ogcool.vercel.app/?d=eyJ0ZW1wbGF0ZUlkIjoidHBsXzB5YklMUGxXSGoifQ%3D%3D))
 
 ### Github
 
